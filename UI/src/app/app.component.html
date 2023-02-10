@@ -1,0 +1,52 @@
+
+<div class="container">
+  <h1>Varun</h1>
+  <div class="card-container">
+
+    <div class="card-form" >
+      <form #form="ngForm" (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+          <label for="">CardName</label>
+          <input type="text" name="cardName" [(ngModel)] = "card.cardHolderName">
+        </div>
+        <div class="form-group">
+          <label for="">CardNumber</label>
+          <input type="text" name="CardNumber" [(ngModel)] = "card.cardHolderNumber">
+        </div> 
+        <div class="form-group form-group-inline">
+          <div>
+            <label for="">CVV</label>
+            <input type="text" name="cvv" [(ngModel)] = "card.cvv">
+          </div>
+          <div>
+            <label for="">Expiry month</label>
+            <input type="text" name="Expirymonth" [(ngModel)] = "card.expiryMonth">
+          </div>
+		  <div>
+            <label for="">Expiry Year</label>
+            <input type="text" name="ExpiryYear" [(ngModel)] = "card.expiryYear" >
+          </div>
+        </div>
+        <div class="form-group">
+          <button>SAVE</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card-row" *ngFor = "let card of cards">
+        <div class="card-row-details" (click) = "cardRowClicked(card)">
+          <span>{{card.cardHolderName}}</span>
+          <span>{{card.cardHolderNumber}}</span> 
+        </div>
+        <div class="card-row-action">
+          <a (click)="deleteCard(card.id)" >
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
